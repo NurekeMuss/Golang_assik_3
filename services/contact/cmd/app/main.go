@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	mysql "clean_code/pkg/store/postgres"
+	"clean_code/pkg/store/postgres"
 	delivery "clean_code/services/contact/internal/delivery/http"
 	repository "clean_code/services/contact/internal/repository/storage/postgres"
 	contactUseCase "clean_code/services/contact/internal/useCase/contact"
@@ -13,8 +13,8 @@ import (
 )
 
 func main() {
-	config := mysql.NewDBConfig("localhost", 5432, "mysql", "12605291", "mysql")
-	db, err := mysql.ConnectToDB(config)
+	config := postgres.NewDBConfig("localhost", 5432, "postgres", "12605291", "postgres")
+	db, err := postgres.ConnectToDB(config)
 	if err != nil {
 		log.Fatalf("Could not connect to the database: %v", err)
 	}
